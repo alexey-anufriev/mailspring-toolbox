@@ -1,25 +1,28 @@
 {
-  "name": "sample",
-  "main": "./lib/main",
-  "version": "0.1.0",
+  "name": "mailspring-toolbox",
+  "main": "./lib/main.js",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/alexey-anufriev/mailspring-toolbox"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "webpack"
   },
   "engines": {
-    "mailspring": ">=1.6.3"
+    "mailspring": ">=1.16.0"
   },
   "windowTypes": {
-    "default": true,
-    "composer": true
+    "default": true
   },
-  "description": "Enter a description of your package!",
+  "description": "Set of useful Mailspring extensions",
   "devDependencies": {
-    "@types/react": "^16.7.22",
-    "typescript": "^3.6.3"
+    "@types/react": "^16.14.68",
+    "@types/react-dom": "^16.9.25",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
   },
   "license": "MIT"
 }
