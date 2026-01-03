@@ -11,7 +11,7 @@ module.exports = {
             type: "commonjs2"
         }
     },
-    resolve: { extensions: [".ts", ".tsx"] },
+    resolve: {extensions: [".ts", ".tsx"]},
     module: {
         rules: [
             {
