@@ -2,14 +2,15 @@ import {React} from 'mailspring-exports';
 import {RetinaImg} from 'mailspring-component-kit';
 import {CONFIG_KEYS} from "./config-keys";
 
-export default class ThreadsOrderButton extends React.Component<{}, { enabled: boolean }> {
+export default class UnreadFirstButton extends React.Component<{}, { enabled: boolean }> {
 
-    static displayName = 'ThreadsOrderButton';
+    static displayName = 'UnreadFirstButton';
 
     private _disposer: any;
 
     constructor(props: {}) {
         super(props);
+
         this.state = {
             enabled: !!AppEnv.config.get(CONFIG_KEYS.UNREAD_FIRST)
         };

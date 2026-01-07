@@ -1,38 +1,35 @@
 import {ComponentRegistry, WorkspaceStore} from "mailspring-exports";
-import ThreadsOrderButton from "./toggle-threads-order-button";
+import UnreadFirstButton from "./unread-first-button";
 import {CONFIG_KEYS} from "./config-keys";
+import {MailboxUtils} from "./mailbox-utils";
+import {UnreadFirstFeature} from "./unread-first-feature";
 
-let _disposer: any = null;
+const mailboxUtils = new MailboxUtils();
+const unreadFirst = new UnreadFirstFeature(() => mailboxUtils.refreshCurrentMailbox());
+
+let _unreadFirstDisposer: any = null;
 
 export function activate() {
-    ComponentRegistry.register(ThreadsOrderButton, {
+    ComponentRegistry.register(UnreadFirstButton, {
         location: WorkspaceStore.Location.RootSidebar.Toolbar,
     });
 
-    _disposer = AppEnv.config.observe(CONFIG_KEYS.UNREAD_FIRST, (enabled: boolean) => {
+    _unreadFirstDisposer = AppEnv.config.observe(CONFIG_KEYS.UNREAD_FIRST, (enabled: boolean) => {
         if (enabled) {
-            enableUnreadFirst();
+            unreadFirst.enable();
         } else {
-            disableUnreadFirst();
+            unreadFirst.disable();
         }
     });
 
-    console.log('Mailspring Toolbox initialized.');
+    console.log('[mailspring-toolbox] initialized');
 }
 
 export function deactivate() {
-    if (_disposer?.dispose) {
-        _disposer.dispose();
+    if (_unreadFirstDisposer?.dispose) {
+        _unreadFirstDisposer.dispose();
     }
-    _disposer = null;
+    _unreadFirstDisposer = null;
 
-    disableUnreadFirst();
-}
-
-function enableUnreadFirst() {
-    console.log("Enable unread first");
-}
-
-function disableUnreadFirst() {
-    console.log("Disable unread first");
+    unreadFirst.disable();
 }
