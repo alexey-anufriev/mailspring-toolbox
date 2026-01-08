@@ -13,7 +13,7 @@ with each feature independently toggleable.
 
 ## Current features
 
-### ✉️ Unread First – sort Inbox threads with unread messages first (Gmail-style)
+### ✉️ Unread First - sort Inbox threads with unread messages first (Gmail-style)
 
 **Unread First** changes the Inbox sort order so that unread threads are shown first, similar to Gmail.
 Sorting applies only to Inbox, does not affect Sent, Trash, or Spam.
